@@ -47,6 +47,7 @@ const getAllRecords = (filters = {}, pagination = {}) => {
     startDate,
     endDate,
     userId,
+    search,
   } = filters;
 
   const { page = 1, limit = 10 } = pagination;
@@ -83,6 +84,10 @@ const getAllRecords = (filters = {}, pagination = {}) => {
     values.push(userId);
   }
 
+  if (search) {
+    conditions.push(`(r.category LIKE ? OR r.notes LIKE ?)`);
+    values.push(`%${search}%`, `%${search}%`);
+  }
   const whereClause = `WHERE ${conditions.join(' AND ')}`;
 
   // Get total count

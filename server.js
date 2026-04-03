@@ -3,7 +3,7 @@ const app = require('./src/app');
 const { initializeDatabase } = require('./src/config/database');
 const dotenv = require('dotenv');
 
-dotenv.config();
+dotenv.config({ quiet: true });
 
 const PORT = process.env.PORT || 3000;
 

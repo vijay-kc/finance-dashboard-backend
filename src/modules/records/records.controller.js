@@ -18,6 +18,7 @@ const getAll = (req, res) => {
       startDate: req.query.startDate,
       endDate: req.query.endDate,
       userId: req.query.userId,
+      search: req.query.search,
     };
 
     const pagination = {

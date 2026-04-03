@@ -15,6 +15,17 @@ A RESTful backend API for a finance dashboard system built with Node.js, Express
 
 ---
 
+---
+
+## Rate Limiting
+
+| Route          | Limit                          |
+|----------------|--------------------------------|
+| All routes     | 100 requests per 15 minutes    |
+| Auth routes    | 10 requests per 15 minutes     |
+
+--- 
+
 ## Project Structure
 
 ```
@@ -263,6 +274,7 @@ Query parameters:
 | startDate  | Filter from date (YYYY-MM-DD)       | ?startDate=2026-01-01       |
 | endDate    | Filter to date (YYYY-MM-DD)         | ?endDate=2026-12-31         |
 | userId     | Filter by creator                   | ?userId=abc123              |
+| search     | Search in category and notes        | ?search=salary              |
 | page       | Page number (default: 1)            | ?page=2                     |
 | limit      | Records per page (default: 10)      | ?limit=5                    |
 
@@ -362,6 +374,8 @@ Query parameter:
 - **Soft delete**: Records are never permanently deleted to maintain auditability and data integrity in a finance system.
 - **Role levels**: Roles are implemented as a hierarchy (viewer=1, analyst=2, admin=3) making it easy to add new roles in the future.
 - **No refresh tokens**: For simplicity, only access tokens are used. In production, refresh tokens should be added.
+- **Rate limiting**: Applied globally (100 req/15min) and strictly on auth routes (10 req/15min) to prevent brute force attacks.
+- **Search**: Supports keyword search across category and notes fields using SQL LIKE queries.
 
 ---
 
