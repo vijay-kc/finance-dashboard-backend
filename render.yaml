@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: finance-dashboard-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: JWT_SECRET
+        sync: false
+      - key: ADMIN_SECRET_KEY
+        sync: false
+      - key: ADMIN_DEFAULT_PASSWORD
+        sync: false
