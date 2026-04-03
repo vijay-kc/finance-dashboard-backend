@@ -359,8 +359,6 @@ Query parameter:
 - A user with an inactive status cannot login
 
 ### Tradeoffs
-- **SQLite over PostgreSQL**: SQLite was chosen for simplicity and zero configuration. The raw SQL queries are structured so they can be easily migrated to PostgreSQL with minimal changes.
-- **Raw SQL over ORM**: Raw SQL was chosen to keep dependencies minimal and make database logic transparent and easy to explain.
 - **Soft delete**: Records are never permanently deleted to maintain auditability and data integrity in a finance system.
 - **Role levels**: Roles are implemented as a hierarchy (viewer=1, analyst=2, admin=3) making it easy to add new roles in the future.
 - **No refresh tokens**: For simplicity, only access tokens are used. In production, refresh tokens should be added.
